@@ -9,7 +9,6 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": ["vite/client"],
     "lib": [
       "esnext",
       "dom"
@@ -26,12 +25,18 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "./auto-imports.d.ts"
+    "./auto-imports.d.ts",
+    "components.d.ts"
   ],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
   ],
-  "exclude": ["node_modules", "build", "dist", "scripts"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts"
+  ]
 }

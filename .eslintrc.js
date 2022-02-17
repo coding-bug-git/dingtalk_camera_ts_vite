@@ -11,7 +11,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential',
     'standard'
+
   ],
+  // parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
@@ -22,6 +24,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'no-unused-vars': 'warn'
+    'no-unused-vars': 'warn',
+    'vue/multi-word-component-names': 'off',
+    'vue/comment-directive': 0
   }
 }
