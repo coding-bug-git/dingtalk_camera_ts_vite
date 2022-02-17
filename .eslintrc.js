@@ -2,12 +2,14 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
+    'vue/setup-compiler-macros': true
   },
   root: true,
   extends: [
-    'plugin:vue/vue3-essential',
+    './.eslintrc-auto-import.json',
     'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-essential',
     'standard'
   ],
   parserOptions: {
