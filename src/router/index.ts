@@ -18,9 +18,10 @@ const router = createRouter({
 
 const whiteList: Array<string> = []
 router.beforeEach((to, from, next) => {
-  if (whiteList.indexOf(to.path) === -1) {
-    console.log(1)
+  if (whiteList.indexOf(to.path) !== -1) {
+    next()
   }
 })
+console.log(1)
 
 export default router
