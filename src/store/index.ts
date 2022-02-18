@@ -1,16 +1,10 @@
-import { InjectionKey } from 'vue'
-import { createStore, Store } from 'vuex'
+import { createStore } from 'vuex'
 
-// 为 store state 声明类型
-export interface State {
-  count: number
-}
-
-// 定义 injection key
-export const key: InjectionKey<Store<State>> = Symbol('store key')
-
-export const store = createStore<State>({
+const store = createStore({
   state: {
     count: 0
-  }
+  },
+  getters: {}
+
 })
+export { store }

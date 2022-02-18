@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 
 defineProps<{ msg: string }>()
-
+ElMessage.info('222')
 const count = ref(0)
 const a = 1
 console.log(import.meta.env)

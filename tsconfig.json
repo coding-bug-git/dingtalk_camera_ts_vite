@@ -28,6 +28,10 @@
     "./auto-imports.d.ts",
     "components.d.ts"
   ],
+  //element 按需引入
+  "types": [
+    "element-plus/global"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

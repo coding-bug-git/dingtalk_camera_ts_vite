@@ -1,27 +1,44 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { _RouteRecordBase, createRouter, createWebHistory, RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import('@/components/HelloWorld.vue')
+    component: () => import('@/components/HelloWorld.vue'),
+    meta: {
+      title: '111'
+    }
   },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue')
+  },
+  {
+    path: '/test',
+    component: () => import('@/views/test.vue')
+  },
+  {
+    path: '/test1',
+    component: () => import('@/views/test1.vue')
   }
+  // {
+  //   path: '/register',
+  //   component: () => import('@/views/register.vue')
+  //
+  // },
+  // {
+  //   path: '/404',
+  //   component: () => import('@/views/error/404.vue')
+  //
+  // },
+  // {
+  //   path: '/401',
+  //   component: () => import('@/views/error/401.vue')
+  // }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 })
-
-const whiteList: Array<string> = []
-router.beforeEach((to, from, next) => {
-  if (whiteList.indexOf(to.path) !== -1) {
-    next()
-  }
-})
-console.log(1)
 
 export default router
