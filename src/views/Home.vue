@@ -9,26 +9,26 @@
 import * as echarts from 'echarts'
 import { EChartsOption } from 'echarts'
 
-const areaRouter = {
-  area1: function (value, errorMsg) {
-
-  },
-  area2: function (value, length, errorMsg) {
-    if (value.length < length) {
-      return errorMsg
-    }
-  },
-  area3: function (value, errorMsg) {
-    if (value === '') {
-      return errorMsg
-    }
-  },
-  area4: function (value, errorMsg) {
-    if (value === '') {
-      return errorMsg
-    }
-  }
-}
+// const areaRouter = {
+//   area1: function (value, errorMsg) {
+//
+//   },
+//   area2: function (value, length, errorMsg) {
+//     if (value.length < length) {
+//       return errorMsg
+//     }
+//   },
+//   area3: function (value, errorMsg) {
+//     if (value === '') {
+//       return errorMsg
+//     }
+//   },
+//   area4: function (value, errorMsg) {
+//     if (value === '') {
+//       return errorMsg
+//     }
+//   }
+// }
 
 const router = useRouter()
 onMounted(() => {
@@ -73,11 +73,7 @@ onMounted(() => {
   const chart = echarts.init(document.getElementById('chart') as HTMLDivElement)
   echarts.registerMap('Beef_cuts_France', { svg })
 
-  interface EChartsRouterOption extends EChartsOption {
-    data: 123
-  }
-
-  const option: EChartsRouterOption = {
+  const option = {
     // tooltip: {},
     series: [
       {
@@ -91,19 +87,18 @@ onMounted(() => {
           }
         },
         selectedMode: false,
-        data: 123
-        // data: [
-        //   {
-        //     name: '区域1',
-        //     value: 'bbb',
-        //     areaId: 'area1'
-        //   },
-        //   {
-        //     name: '区域2',
-        //     value: '222',
-        //     areaId: 'area2'
-        //   }
-        // ]
+        data: [
+          {
+            name: '区域1',
+            value: 'bbb',
+            areaId: 'area1'
+          },
+          {
+            name: '区域2',
+            value: '222',
+            areaId: 'area2'
+          }
+        ]
       }
     ]
   }
