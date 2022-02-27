@@ -1,12 +1,10 @@
-import { _RouteRecordBase, createRouter, createWebHistory, RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import('@/components/HelloWorld.vue'),
-    meta: {
-      title: '111'
-    }
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/login',
@@ -19,26 +17,24 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/test1',
     component: () => import('@/views/test1.vue')
+  },
+  {
+    path: '/404',
+    component: NotFound
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404'
   }
-  // {
-  //   path: '/register',
-  //   component: () => import('@/views/register.vue')
-  //
-  // },
-  // {
-  //   path: '/404',
-  //   component: () => import('@/views/error/404.vue')
-  //
-  // },
-  // {
-  //   path: '/401',
-  //   component: () => import('@/views/error/401.vue')
-  // }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+// router.beforeEach((to, from) => {
+//   next()
+// })
 
 export default router

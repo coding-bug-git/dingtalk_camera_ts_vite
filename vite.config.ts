@@ -10,10 +10,12 @@ const elementPlusResolver = ElementPlusResolver()
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+  console.log(env.VITE_APP_BASE_API)
   return defineConfig({
     plugins: [
       vue(),
-      ElementPlus(),
+      // ElementPlus(),
       AutoImport({
         resolvers: [elementPlusResolver],
         imports: ['vue', 'vue-router'],
@@ -29,13 +31,18 @@ export default ({ mode }) => {
     ],
     server: {
       host: '0.0.0.0',
-      port: 3000,
+      port: 9123,
       open: true,
       proxy: {
-        [loadEnv(mode, process.cwd()).VITE_APP_BASE_API]: {
-          target: loadEnv(mode, process.cwd()).VITE_APP_APIURL,
+        // [env.VITE_APP_BASE_API]: {
+        //   target: env.VITE_APP_APIURL,
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(env.VITE_APP_BASE_API, '')
+        // }
+        '/dev-api': {
+          target: 'http://localhost:8088/dev-api',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
+          rewrite: (path) => path.replace(/^\/dev-api/, '')
         }
       }
     },

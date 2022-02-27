@@ -8,10 +8,9 @@ module.exports = {
   root: true,
   extends: [
     './.eslintrc-auto-import.json',
-    'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential',
+    // 'plugin:@typescript-eslint/recommended',
     'standard'
-
   ],
   // parser: 'vue-eslint-parser',
   parserOptions: {
@@ -25,7 +24,6 @@ module.exports = {
   ],
   rules: {
     'no-unused-vars': 'warn',
-    'vue/multi-word-component-names': 'off',
-    'vue/comment-directive': 0
+    'vue/multi-word-component-names': 'off'
   }
 }

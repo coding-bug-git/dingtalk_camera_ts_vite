@@ -4,7 +4,7 @@ import NProgress from 'nprogress'
 import { getToken } from '@/utils/auth'
 import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 
-const whiteList: Array<string> = ['/login', '/test', '/404']
+const whiteList: Array<string> = ['/', '/test', '/404']
 const store = useStore()
 router.beforeEach((to: RouteLocationNormalized, from, next) => {
   NProgress.start()
@@ -41,7 +41,7 @@ router.beforeEach((to: RouteLocationNormalized, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+      next(`/?redirect=${to.fullPath}`) // 否则全部重定向到登录页
       NProgress.done()
     }
   }
