@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
-import App from '@/App.vue'
+import App from './App.vue'
 import router from '@/router'
-import { store } from '@/store'
-import './permission'
+import { store, key } from './store'
+import '@/assets/css/index.scss'
+// import './permission'
+import '@/mock'
 
 const app = createApp(App)
-app.use(router)
-  .use(store)
+app
+  .use(router)
+  .use(store, key)
   .mount('#app')

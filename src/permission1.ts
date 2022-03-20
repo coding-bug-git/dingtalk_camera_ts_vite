@@ -21,8 +21,8 @@ router.beforeEach((to: RouteLocationNormalized, from, next) => {
           store.dispatch('GetRoutes').then(routeArr => {
             routeArr.forEach((route: RouteRecordRaw) => {
               router.addRoute(route)
-              next({ ...to, replace: true })
             })
+            next({ ...to, replace: true })
           })
             .catch(err => {
               store.dispatch('Logout').then(() => {

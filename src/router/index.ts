@@ -4,11 +4,12 @@ import NotFound from '@/views/NotFound.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    alias: '/home',
     component: () => import('@/views/Home.vue')
   },
   {
     path: '/login',
-    component: () => import('@/views/login/index.vue')
+    component: () => import('@/views/Login.vue')
   },
   {
     path: '/test',
@@ -25,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/404'
+  },
+  {
+    path: '/camera/:areaId',
+    name: 'Camera',
+    component: () => import('@/views/camera/index.vue')
   }
 ]
 

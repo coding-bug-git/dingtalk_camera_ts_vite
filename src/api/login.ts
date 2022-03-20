@@ -10,10 +10,18 @@ interface dingLoginData {
 export const dingLogin = (data: dingLoginData) => {
   return request({
     url: '/dingLogin',
-    // headers: {
-    //   isToken: false
-    // },
+    headers: {
+      isToken: false
+    },
     method: 'post',
-    data: data
+    data
+  })
+}
+
+// 获取用户详细信息
+export function getUserInfo () {
+  return request({
+    url: '/getInfo',
+    method: 'get'
   })
 }

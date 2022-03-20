@@ -1,11 +1,10 @@
-import { useStore } from '@/store'
+import { store } from '@/store'
 import router from '@/router'
 import NProgress from 'nprogress'
 import { getToken } from '@/utils/auth'
+import { ROUTE_WHITE_LIST } from '@/utils/constant'
 import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 
-const whiteList: Array<string> = ['/login', '/test', '/404']
-const store = useStore()
 router.beforeEach((to: RouteLocationNormalized, from, next) => {
   NProgress.start()
   if (getToken()) {
@@ -17,8 +16,8 @@ router.beforeEach((to: RouteLocationNormalized, from, next) => {
       NProgress.done()
     } else {
       if (store.getters.roles.length === 0) {
-        store.dispatch('GetUserInfo').then(() => {
-          store.dispatch('GetRoutes').then(routeArr => {
+        store.dispatch('user/GetUserInfo').then(() => {
+          store.dispatch('user/GetUserInfo').then(routeArr => {
             routeArr.forEach((route: RouteRecordRaw) => {
               router.addRoute(route)
               next({ ...to, replace: true })
@@ -37,7 +36,7 @@ router.beforeEach((to: RouteLocationNormalized, from, next) => {
     }
   } else {
     // 没有token
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (ROUTE_WHITE_LIST.indexOf(to.path) !== -1) {
       // 在免登录白名单，直接进入
       next()
     } else {

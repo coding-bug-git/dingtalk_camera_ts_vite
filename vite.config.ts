@@ -15,7 +15,7 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [
       vue(),
-      // ElementPlus(),
+      ElementPlus(), // 解决 elmessage 无样式
       AutoImport({
         resolvers: [elementPlusResolver],
         imports: ['vue', 'vue-router'],
@@ -34,16 +34,16 @@ export default ({ mode }) => {
       port: 9123,
       open: true,
       proxy: {
-        // [env.VITE_APP_BASE_API]: {
-        //   target: env.VITE_APP_APIURL,
-        //   changeOrigin: true,
-        //   rewrite: (path) => path.replace(env.VITE_APP_BASE_API, '')
-        // }
-        '/dev-api': {
-          target: 'http://localhost:8088/dev-api',
+        [env.VITE_APP_BASE_API]: {
+          target: env.VITE_APP_APIURL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/dev-api/, '')
+          rewrite: (path) => path.replace(env.VITE_APP_BASE_API, '')
         }
+        // '/dev-api': {
+        //   target: 'http://localhost:8080/dev-api',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/dev-api/, '')
+        // }
       }
     },
     resolve: {

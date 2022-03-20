@@ -1,28 +1,65 @@
 <template>
   <h1>login</h1>
+  <pre>{{ route }}</pre>
+
+  <!--<pre style="text-align: left">{{ state.userInfo.data }}</pre>-->
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 
-import * as dd from 'dingtalk-jsapi'
-import { dingLogin } from '@/api/api'
+// import { dingLogin } from '@/api/login'
+// import dd from 'dingtalk-jsapi'
 
-ElMessage.info('this is login')
-const url = window.location.href
-dingLogin({ code: 'corpid' }).then(result => {
-  console.log(result)
+export default defineComponent({
+  setup () {
+    const route = useRoute()
+    // const store = useStore()
+    const redirectUrl = ref('')
+    ElMessage.info('this is login')
+
+    return { route }
+  }
 })
+// export default defineComponent({
+//   setup () {
+//     ElMessage.info('this is login')
+//     let url = ref(window.location.href)
+//     const state = reactive({ token: {} })
+//     // const store = useStore()
+//     const redirectUrl = ref('')
+// watch()
+// ElMessage.info(import.meta.env.VITE_APP_CORPID as string)
+// const corpid = import.meta.env.VITE_APP_CORPID as string
+//
+// state.userInfo = await dingLogin({ code: 'result.code' })
+// ElNotification({
+//   title: 'Title',
+//   message: h('i', { style: 'color: teal' }, JSON.stringify(state.userInfo))
+// })
+
+// const result = await dd.runtime.permission.requestAuthCode({ corpId: corpid })
+
 // 获取免登授权码
 // dd.ready(async () => {
-//   ElMessage.info(import.meta.env.VITE_APP_CORPID as string)
 //   const corpid = import.meta.env.VITE_APP_CORPID as string
 //
-//   const userinfo = await dingLogin({ code: 'corpid' })
-//   ElNotification({
-//     title: 'Title',
-//     message: h('i', { style: 'color: teal' }, JSON.stringify(userinfo))
+//   ElMessage.info(corpid)
+//
+//   const result = await dd.runtime.permission.requestAuthCode({ corpId: corpid })
+//
+//   store.dispatch('user/DingLogin', { code: result.code }).then(() => {
+//     router.push({ path: this.redirect || '/' }).catch(() => {
+//     })
+//   }).catch(() => {
 //   })
+//
+//   state.token = await dingLogin({ code: result.code })
 // })
+//
+//     return { state, url }
+//   }
+// })
+
 </script>
 
 <style lang="scss">

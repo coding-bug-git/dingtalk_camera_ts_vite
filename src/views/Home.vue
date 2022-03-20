@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
 import { EChartsOption } from 'echarts'
+import request from '@/utils/request'
 
 // const areaRouter = {
 //   area1: function (value, errorMsg) {
@@ -29,6 +30,10 @@ import { EChartsOption } from 'echarts'
 //     }
 //   }
 // }
+
+request({ url: '/test11', method: 'get' }).then(res => {
+  console.log(res)
+})
 
 const router = useRouter()
 onMounted(() => {
@@ -104,12 +109,7 @@ onMounted(() => {
   }
   chart.on('click', (params: any) => {
     console.log(params)
-    router.push({
-      name: 'Camera',
-      params: {
-        areaId: params.data.areaId
-      }
-    })
+    router.push(`/camera/${params.data.areaId}`)
   })
   chart.setOption(option)
 })

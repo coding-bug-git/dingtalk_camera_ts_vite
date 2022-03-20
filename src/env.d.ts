@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-
 import { ComponentCustomProperties } from 'vue'
 import { Store } from 'vuex'
 
@@ -26,7 +25,7 @@ interface ImportMeta {
 declare module '@vue/runtime-core' {
   // 声明自己的 store state
   interface State {
-    [key: string]: unknown
+    [key: string]: any
   }
 
   // 为 `this.$store` 提供类型声明
@@ -34,3 +33,4 @@ declare module '@vue/runtime-core' {
     $store: Store<State>
   }
 }
+declare type nullDefined = null | undefined
