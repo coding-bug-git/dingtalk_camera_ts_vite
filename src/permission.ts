@@ -23,12 +23,11 @@ router.beforeEach((to: RouteLocationNormalized, from, next) => {
               next({ ...to, replace: true })
             })
           })
-            .catch(err => {
-              store.dispatch('Logout').then(() => {
-                ElMessage.error(err)
-                next({ path: '/' })
-              })
-            })
+        }).catch(err => {
+          store.dispatch('Logout').then(() => {
+            ElMessage.error(err)
+            next({ path: '/' })
+          })
         })
       } else {
         next()
