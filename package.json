@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --mode dev",
     "mock": "vite --mode mock",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "build:dev": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },

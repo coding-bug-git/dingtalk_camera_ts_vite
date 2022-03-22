@@ -5,7 +5,7 @@ import { store, key } from './store'
 import '@/assets/css/index.scss'
 import './permission'
 
-if (import.meta.env.MODE === 'mock') await import('@/mock')
+if (import.meta.env.VITE_APP_ISMOCK === 'true') await import('@/mock')
 
 const app = createApp(App)
 app

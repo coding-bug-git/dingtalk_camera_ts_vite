@@ -11,6 +11,7 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
+  readonly VITE_APP_ISMOCK: boolean
   readonly VITE_APP_APIURL: string
   readonly VITE_APP_BASE_API: string
   readonly VITE_APP_PORT: number
@@ -34,3 +35,10 @@ declare module '@vue/runtime-core' {
   }
 }
 declare type nullDefined = null | undefined
+
+interface AjaxResult {
+  code: number
+  msg: string
+  data: {} | nullDefined
+}
+

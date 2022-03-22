@@ -1,16 +1,12 @@
 import Mock from 'mockjs'
-import { nullDefined } from '@/env'
+import { AjaxResult } from '@/env'
 
 console.log('mock mode~~~')
 const Random = Mock.Random
-const mock = (url: string, method: string, fn: Function) => {
-  Mock.mock(import.meta.env.VITE_APP_BASE_API as string + url, method, fn)
-}
+const baseApi = import.meta.env.VITE_APP_BASE_API as string
 
-type AjaxResult = {
-  code: number
-  msg: string
-  data: {} | nullDefined
+const mock = (url: string, method: string, fn: Function) => {
+  Mock.mock(baseApi + url, method, fn)
 }
 
 const ajaxResult: AjaxResult = {
