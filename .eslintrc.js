@@ -9,8 +9,8 @@ module.exports = {
   extends: [
     './.eslintrc-auto-import.json',
     'plugin:vue/vue3-essential',
-    'standard'
-    // 'plugin:@typescript-eslint/recommended',
+    'standard',
+    'plugin:@typescript-eslint/eslint-recommended'
   ],
   // parser: 'vue-eslint-parser',
   parserOptions: {

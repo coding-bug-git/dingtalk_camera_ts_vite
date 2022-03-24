@@ -1,6 +1,4 @@
 /// <reference types="vite/client" />
-import { ComponentCustomProperties } from 'vue'
-import { Store } from 'vuex'
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -11,10 +9,10 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
-  readonly VITE_APP_ISMOCK: boolean
+  readonly VITE_APP_ISMOCK: string
   readonly VITE_APP_APIURL: string
   readonly VITE_APP_BASE_API: string
-  readonly VITE_APP_PORT: number
+  readonly VITE_APP_PORT: string
   readonly VITE_APP_CORPID: string
   // 更多环境变量...
 }
@@ -23,17 +21,6 @@ interface ImportMeta {
   readonly env: ImportMetaEnv
 }
 
-declare module '@vue/runtime-core' {
-  // 声明自己的 store state
-  interface State {
-    [key: string]: any
-  }
-
-  // 为 `this.$store` 提供类型声明
-  interface ComponentCustomProperties {
-    $store: Store<State>
-  }
-}
 declare type nullDefined = null | undefined
 
 interface AjaxResult {

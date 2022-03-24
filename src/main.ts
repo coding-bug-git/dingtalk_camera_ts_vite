@@ -6,7 +6,7 @@ import '@/assets/css/index.scss'
 import './permission'
 
 if (import.meta.env.VITE_APP_ISMOCK === 'true') await import('@/mock')
-
+const a: nullDefined = null
 const app = createApp(App)
 app
   .use(router)

@@ -1,5 +1,3 @@
-import { nullDefined } from '@/env'
-
 export type UserInfo = IUserInfo | nullDefined
 
 export interface UserState {
